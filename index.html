@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sprint 1 - Minesweeper</title>
+    <link rel="stylesheet" href="../minesweeper/css/main.css">
+</head>
+
+<body onload="init(4,2)">
+    <div class="header">
+        <h1>Minesweeper</h1>
+    </div>
+    <div class="hints-container">
+        <div class="hints">
+            <h2>Hints</h2>
+            <button class="hint" onclick="getHint(this)" type="button"><img
+                    src="../minesweeper/imgs/lightbulb.png" /></button>
+            <button class="hint" onclick="getHint(this)" type="button"><img
+                    src="../minesweeper/imgs/lightbulb.png" /></button>
+            <button class="hint" onclick="getHint(this)" type="button"><img
+                    src="../minesweeper/imgs/lightbulb.png" /></button>
+        </div>
+    </div>
+
+
+    <table border="1px" class="field-container">
+        <tbody class="field-header-container">
+            <tr class="field-header"></tr>
+        </tbody>
+        <tbody class="field"></tbody>
+    </table>
+
+    <div class="levels-container">
+        <button class="easy" onclick="init(4,2)" type="button">Easy</button>
+        <button class="medium" onclick="init(8,12)" type="button">Medium</button>
+        <button class="expert" onclick="init(12,30)" type="button">Expert</button>
+    </div>
+    <script type="text/javascript" src="../minesweeper/js/main.js"></script>
+</body>
+
+</html>

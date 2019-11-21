@@ -1,0 +1,127 @@
+body{
+  margin-top: 5%;
+  background-image: url('../imgs/wallpaper.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+table{
+  background-color: indigo;
+}
+
+.header{
+  text-align: center;
+}
+
+.header h1{
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.field-container{
+  /* max-width: 900px; */
+  margin: auto;
+
+}
+
+.cell{
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 1.5em;
+  /* box-sizing: border-box; */
+  transition: 1s;
+}
+
+.cell:hover{
+  background-color: rgb(255, 151, 90);
+}
+
+.field-header-container{
+  background-color: rgb(108, 61, 185);
+  /* width: 60px;
+  height: 60px; */
+  text-align: center;
+  transition: 1s;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.field-header{
+  width: auto;
+  height: 60px;
+}
+
+.score{
+  text-align: center;
+}
+
+.restart{
+  display: inline;
+  background-color: transparent;
+}
+
+.timer{
+  text-align: center;
+}
+
+img{
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+
+.levels-container{
+  text-align: center;
+  margin: 50px;
+}
+
+.mine{
+  background-color: indianred;
+}
+
+.empty{
+  background-color: darkgray;
+}
+
+.number{
+  background-color: lightgray;
+}
+
+.number1{
+  color:blue;
+}
+.number2{
+  color:green;
+}
+.number3{
+  color:red;
+}
+.number4{
+  color:purple;
+}
+.number5{
+  color:maroon;
+}
+.number6{
+  color:turquoise;
+}
+.number7{
+  color:black;
+}
+.number8{
+  color:gray;
+}
+
+.hints-container{
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 1.5em;
+  transition: 1s;
+}
+
+.hints h2{
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; 
+}
