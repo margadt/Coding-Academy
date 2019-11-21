@@ -13,8 +13,10 @@ var gSafeClickCnt = 3;
 
 
 function init(sizeNum, minesNum) {
+    clearInterval(gGameInterval);
     gLevel.SIZE = sizeNum;
     gLevel.MINES = minesNum;
+    document.querySelector('.modal').hidden = true;
     gGame = { isOn: false, shownCount: 0, markedCount: 0, secsPassed: 0, lives: 2 };
     resetHints();
     gGame.isOn = true;
@@ -130,6 +132,12 @@ function cellClicked(iIdx, jIdx) {
     if (gGame.secsPassed === 1) {
         gGameInterval = setInterval(updateHeader, 1000);
     }
+    if (gIsHint) {
+        showNeighs(iIdx, jIdx);
+        setTimeout(() => { hideNeighs(iIdx, jIdx) }, 2000);
+        gIsHint = false;
+        return;
+    }
     if (!gGame.shownCount) {
         if (gBoard[iIdx][jIdx].isMine) {
             moveMineToRandPos(gBoard, iIdx, jIdx);
@@ -205,28 +213,6 @@ function isWin() {
     }
 }
 
-// function expandShown(board, iIdx, jIdx) {
-//     // var pos = { i: iIdx, j: jIdx };
-
-//     for (let i = iIdx - 1; i <= iIdx + 1; i++) {
-//         if (i < 0 || i >= board.length) continue;
-//         for (let j = jIdx - 1; j <= jIdx + 1; j++) {
-//             if (j < 0 || j >= board[0].length) continue;
-//             // if (!board[i][j].minesAroundCount) expandShown(board, i, j);
-//             if (board[i][j].isMine) {
-//                 continue;
-//             } else if (board[i][j].isMarked) {
-//                 continue;
-//             } else {
-//                 board[i][j].isShown = true;
-//             }
-//         }
-//     }
-//     renderBoard(gBoard);
-//     console.log('expanded');
-// }
-
-
 function expandShown(board, iIdx, jIdx) {
     if (iIdx < 0 || iIdx >= board.length || jIdx < 0 || jIdx >= gBoard[0].length) return; // check for bounds
     if (board[iIdx][jIdx].minesAroundCount) {
@@ -275,12 +261,12 @@ function moveMineToRandPos(board, iIdx, jIdx) {
 
 function getNotMineCell(board) {
     var emptyCells = [];
-    var currElCell;
+    var currCell;
 
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[0].length; j++) {
-            currElCell = board[i][j];
-            if (!currElCell.isMine) {
+            currCell = board[i][j];
+            if (!currCell.isMine && !currCell.isShown) {
                 emptyCells.push({ i: i, j: j });
             }
         }
@@ -294,19 +280,15 @@ function getHint(elBtn) {
     if (!gGame.isOn) return;
     if (gIsHint) return;
     gIsHint = true;
-    var notMineCellPos = getNotMineCell(gBoard);
     var elHintBtn = elBtn;
-    showNeighs(notMineCellPos);
-    setTimeout(() => { hideNeighs(notMineCellPos) }, 2000);
     elHintBtn.hidden = true;
-    gIsHint = false;
 }
 
 
-function showNeighs(pos) {
-    for (let i = pos.i - 1; i <= pos.i + 1; i++) {
+function showNeighs(iIdx, jIdx) {
+    for (let i = iIdx - 1; i <= iIdx + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
-        for (let j = pos.j - 1; j <= pos.j + 1; j++) {
+        for (let j = jIdx - 1; j <= jIdx + 1; j++) {
             if (j < 0 || j >= gBoard[0].length) continue;
             if (gBoard[i][j].isMarked || gBoard[i][j].isShown) {
                 continue;
@@ -319,10 +301,10 @@ function showNeighs(pos) {
     renderBoard(gBoard);
 }
 
-function hideNeighs(pos) {
-    for (let i = pos.i - 1; i <= pos.i + 1; i++) {
+function hideNeighs(iIdx, jIdx) {
+    for (let i = iIdx - 1; i <= iIdx + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
-        for (let j = pos.j - 1; j <= pos.j + 1; j++) {
+        for (let j = jIdx - 1; j <= jIdx + 1; j++) {
             if (j < 0 || j >= gBoard[0].length) continue;
             if (gBoard[i][j].isHint) {
                 gBoard[i][j].isShown = false;
@@ -364,11 +346,12 @@ function updateScore() {
 
 function safeClick() {
     var notMineCellPos = getNotMineCell(gBoard);
-    var elCell = document.querySelector(`cell${notMineCellPos.i}-${notMineCellPos.j}`);
-
+    var elCell = document.querySelector(`.cell${notMineCellPos.i}-${notMineCellPos.j}`);
+    var elSafeText = document.querySelector('.safe-click-text');
     if (!gSafeClickCnt) return;
     gSafeClickCnt--;
     elCell.style.backgroundColor = "lightgreen";
 
-    setTimeout(() => { elCell.style.backgroundColor = rgb(108, 61, 185); }, 1000);
+    setTimeout(() => { elCell.style.backgroundColor = `indigo`; }, 1000);
+    elSafeText.innerText = `${gSafeClickCnt} Clicks available`;
 }
