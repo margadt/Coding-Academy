@@ -6,7 +6,10 @@ body{
 }
 
 table{
+  margin-left: 40%;
+  text-align: center;
   background-color: indigo;
+  box-sizing: content-box;
 }
 
 .header{
@@ -17,16 +20,14 @@ table{
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.field-container{
-  max-width: 900px;
-  margin: auto;
-
-}
 
 .cell{
+  margin-left:auto; 
+  margin-right:auto;
+
   vertical-align: middle;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   font-size: 1.5em;
   /* box-sizing: border-box; */
@@ -47,7 +48,7 @@ table{
 
 .field-header{
   width: auto;
-  height: 60px;
+  height: 50px;
 }
 
 .shown{
@@ -74,8 +75,8 @@ img{
 }
 
 .levels-container{
+  padding: 5%;
   text-align: center;
-  margin: 50px;
 }
 
 .mine{
@@ -118,8 +119,8 @@ img{
 .hints-container{
   float: left;
   vertical-align: left;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   text-align: left;
   font-size: 1.5em;
   transition: 1s;
@@ -130,7 +131,7 @@ img{
 }
 
 .modal{
-  margin:20px;
+  padding: 5%;
   float: right;
   top:0;
   right:0;
@@ -177,8 +178,8 @@ img{
   width: auto;
   margin:20px;
   float: right;
-  top:0;
-  right:0;
+  top:50%;
+  right:20px;
   width: 200px;
   height: auto;
   border:1px;
@@ -188,7 +189,22 @@ img{
   background-color: transparent;
 }
 
+.safe-click img{
+  height: 60px;
+  width: auto;
+}
+
 .safe-click-text{
   font-size: 1em;
   color: azure;
+}
+
+.manual-container{
+  height: auto;
+  width: auto;
+  bottom: 30%;
+}
+
+.button{
+  border: 1px;
 }
