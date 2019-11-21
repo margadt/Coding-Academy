@@ -18,7 +18,7 @@ table{
 }
 
 .field-container{
-  /* max-width: 900px; */
+  max-width: 900px;
   margin: auto;
 
 }
@@ -39,8 +39,6 @@ table{
 
 .field-header-container{
   background-color: rgb(108, 61, 185);
-  /* width: 60px;
-  height: 60px; */
   text-align: center;
   transition: 1s;
   vertical-align: middle;
@@ -50,6 +48,10 @@ table{
 .field-header{
   width: auto;
   height: 60px;
+}
+
+.shown{
+  box-shadow: inset 1px 1px 0px 0px black;
 }
 
 .score{
@@ -114,14 +116,79 @@ img{
 }
 
 .hints-container{
-  vertical-align: middle;
+  float: left;
+  vertical-align: left;
   width: 60px;
   height: 60px;
-  text-align: center;
+  text-align: left;
   font-size: 1.5em;
   transition: 1s;
 }
 
 .hints h2{
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; 
+}
+
+.modal{
+  margin:20px;
+  float: right;
+  top:0;
+  right:0;
+  width: 200px;
+  height: auto;
+  background-color:darkslateblue;
+  border:1px;
+}
+
+.modal-content{
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: azure;
+}
+
+.lives{
+  top:0;
+  right:0;
+  float: inline-start;
+  background-color: transparent;
+}
+
+.life{
+  display:inline-block;
+}
+
+.best-time-container{
+  color: azure;
+  text-align: left;
+  vertical-align: middle;
+  margin-left:15px;
+  width: auto;
+  height: auto;
+  font-size: 1em;
+  float:right;
+  top:0;
+  background-color: darkslateblue;
+}
+
+.safe-click-container{
+  height: auto;
+  width: auto;
+  margin:20px;
+  float: right;
+  top:0;
+  right:0;
+  width: 200px;
+  height: auto;
+  border:1px;
+}
+
+.safe-click{
+  background-color: transparent;
+}
+
+.safe-click-text{
+  font-size: 1em;
+  color: azure;
 }

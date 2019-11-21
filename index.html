@@ -6,24 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sprint 1 - Minesweeper</title>
-    <link rel="stylesheet" href="../minesweeper/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body onload="init(4,2)">
     <div class="header">
         <h1>Minesweeper</h1>
     </div>
+    <div class="best-time-container">
+        <h3>Level: <span class="best-level"></span></h3>
+        <h3>Best Time:<span class="best-time"></span></h3>
+    </div>
+    <div class="modal" hidden>
+        <div class="modal-content"></div>
+    </div>
+    <div class="lives">
+        <div class="life">
+            <img class="life life1" src="imgs/life.png" hidden />
+            <img class="life life2" src="imgs/life.png" hidden />
+            <img class="life life3" src="imgs/life.png" hidden />
+        </div>
+    </div>
     <div class="hints-container">
         <div class="hints">
             <h2>Hints</h2>
             <button class="hint" onclick="getHint(this)" type="button"><img
-                    src="../minesweeper/imgs/lightbulb.png" /></button>
+                    src="imgs/lightbulb.png" /></button>
             <button class="hint" onclick="getHint(this)" type="button"><img
-                    src="../minesweeper/imgs/lightbulb.png" /></button>
+                    src="imgs/lightbulb.png" /></button>
             <button class="hint" onclick="getHint(this)" type="button"><img
-                    src="../minesweeper/imgs/lightbulb.png" /></button>
+                    src="imgs/lightbulb.png" /></button>
         </div>
     </div>
+    <div class="safe-click-container">
+        <button class="safe-click" onclick="safeClick()" type="button"><img
+             src="imgs/safe_btn.png" /></button>
+        <p class="safe-click-text">3 Clicks available</p>
+    </div>
+
 
 
     <table border="1px" class="field-container">
@@ -33,12 +53,14 @@
         <tbody class="field"></tbody>
     </table>
 
+
+
     <div class="levels-container">
         <button class="easy" onclick="init(4,2)" type="button">Easy</button>
         <button class="medium" onclick="init(8,12)" type="button">Medium</button>
         <button class="expert" onclick="init(12,30)" type="button">Expert</button>
     </div>
-    <script type="text/javascript" src="../minesweeper/js/main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>
